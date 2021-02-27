@@ -7,6 +7,7 @@ form.addEventListener('submit', function(e){
   const formObj = formToObject(formData);
   createRowItem(formObj);
   saveData(formObj);
+  form.reset()
 
 });
 
@@ -19,11 +20,13 @@ const formToObject = (formData) => {
   let id = getTransactionId();
 
   return {
+
     'typeSelection':typeSelection,
     'description':description,
     'amount':amount,
     'category':category,
-    'transactionId':id
+    'id':id
+
   }
 
 }
@@ -40,7 +43,7 @@ const getTransactionId = () => {
 const createRowItem = (formObj) => {
 
   const newRow = document.querySelector("#table").insertRow(-1);
-  newRow.setAttribute('data-transaction-id', formObj['transactionId']);
+  newRow.setAttribute('id', formObj['id']);
   let newCell = newRow.insertCell(0);
   newCell.textContent = formObj['typeSelection'];
   newCell = newRow.insertCell(1);
@@ -56,10 +59,12 @@ const createRowItem = (formObj) => {
   cellForBtn.appendChild(btnDeleteItem);
 
   btnDeleteItem.addEventListener('click', function(){
+
     let transactionRow = this.parentNode.parentNode;
-    let transactionId = transactionRow.getAttribute('data-transaction-id');
+    let id = transactionRow.getAttribute('id');
+    deleteItemLocalStorage(id);
     transactionRow.remove();
-    deleteItemLocalStorage(transactionId);
+
   });
 
 }
@@ -72,12 +77,12 @@ const saveData = (formObj) => {
 
 }
 
-const deleteItemLocalStorage = (transactionId) => {
+const deleteItemLocalStorage = (id) => {
 
   let savedData = JSON.parse(localStorage.getItem('transactions'));
-  let indexDataToDelete = savedData.filter(x => x.transactionId === transactionId);
-  indexDataToDelete.splice(indexDataToDelete, 1);
-  localStorage.setItem('transactions', JSON.stringify(savedData ));
+  let getIndexElem = savedData.findIndex(x => x.id == id);
+  getIndexElem.splice(getIndexElem, 1);
+  localStorage.setItem('transactions', JSON.stringify(savedData));
 
 }
 
