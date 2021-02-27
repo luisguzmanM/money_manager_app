@@ -1,0 +1,79 @@
+const formRef = document.getElementById('form');
+
+formRef.addEventListener('submit', function (e) {
+  e.preventDefault();
+  const formDataRef = new FormData(formRef);
+  let transObj = dataToObject(formDataRef);
+  saveDataLocalStorage(transObj);
+  insertRowElement(transObj);
+  formRef.reset();
+});
+
+const getTransactionId = () => {
+  let lastTransactionId = localStorage.getItem('lastTransactionId') || '-1';
+  let newTransactionId = JSON.parse(lastTransactionId) + 1;
+  localStorage.setItem('lastTransactionId', JSON.stringify(newTransactionId));
+  return newTransactionId;
+}
+
+const dataToObject = (formDataRef) => {
+  let typeSelection = formDataRef.get('typeSelection');
+  let description = formDataRef.get('description');
+  let amount = formDataRef.get('amount');
+  let category = formDataRef.get('category');
+  let transactionId = getTransactionId();
+  return {
+    "typeSelection" : typeSelection,
+    "description" : description,
+    "amount" : amount,
+    "category" : category,
+    "id" : transactionId
+  }
+}
+
+const saveDataLocalStorage = (transObj) => {
+  let myArray = JSON.parse(localStorage.getItem('transactions')) || [];
+  myArray.push(transObj);
+  localStorage.setItem('transactions', JSON.stringify(myArray));
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  let myArray = JSON.parse(localStorage.getItem('transactions')) || [];
+  myArray.forEach(element => {
+    insertRowElement(element);
+  });
+});
+
+const insertRowElement = (transObj) => {
+  const tableRef = document.getElementById('table');
+
+  const newRow = tableRef.insertRow(-1);
+
+  let newCell = newRow.insertCell(0);
+  newCell.textContent = transObj['typeSelection'];
+
+  newCell = newRow.insertCell(1);
+  newCell.textContent = transObj['description'];
+
+  newCell = newRow.insertCell(2);
+  newCell.textContent = transObj['amount'];
+
+  newCell = newRow.insertCell(3);
+  newCell.textContent = transObj['category'];
+
+  let newDeleteCell = newRow.insertCell(4);
+  let newDeleteBtn = document.createElement('button');
+  newDeleteCell.appendChild(newDeleteBtn);
+  let textBtnDelete = document.createTextNode('Eliminar');
+  newDeleteBtn.appendChild(textBtnDelete);
+
+  newDeleteBtn.addEventListener('click', function(e){
+    e.target.parentNode.parentNode.remove();
+  });
+}
+
+/*
+
+  FormData: Construye un conjunto de parejas clave/valor que representan los campos de un formulario y sus valores.
+
+*/
