@@ -10,7 +10,7 @@ form.addEventListener('submit', function(e){
   form.reset()
 
 });
-
+   
 const formToObject = (formData) => {
 
   let typeSelection = formData.get('typeSelection');
@@ -72,16 +72,16 @@ const createRowItem = (formObj) => {
 const saveData = (formObj) => {
 
   let savedData = JSON.parse(localStorage.getItem('transactions')) || [];
-  savedData.push(formObj);
+  savedData.push(formObj);  
   localStorage.setItem('transactions', JSON.stringify(savedData));
 
 }
 
 const deleteItemLocalStorage = (id) => {
 
-  let savedData = JSON.parse(localStorage.getItem('transactions'));
+  let savedData = JSON.parse(localStorage.getItem('transactions')) || [];
   let getIndexElem = savedData.findIndex(x => x.id == id);
-  getIndexElem.splice(getIndexElem, 1);
+  savedData.splice(getIndexElem, 1);
   localStorage.setItem('transactions', JSON.stringify(savedData));
 
 }
