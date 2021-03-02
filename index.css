@@ -11,7 +11,7 @@ body {
 }
 
 .container {
-  min-width: 24em;
+  min-width: 25rem;
   position: absolute;
   left: 50%;
   transform: translate(-50%);
@@ -23,14 +23,14 @@ body {
   text-align: center;
   font-size: 0.8em;
   padding: 2em;
-  border: 1px solid #000;
+  border: 0.0625rem solid #000;
 }
 
 .main {
   padding: 1em;
-  border-left: 1px solid #000;
-  border-right: 1px solid #000;
-  border-bottom: 1px solid #000;
+  border-left: 0.0625rem solid #000;
+  border-right: 0.0625rem solid #000;
+  border-bottom: 0.0625rem solid #000;
 }
 
 .form {
@@ -46,7 +46,7 @@ body {
   padding: 0.5em;
   color: darkblue;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1em;
   display: flex;
   align-self: center;
   margin: 1em;
@@ -68,7 +68,7 @@ table {
   width: 100%;
   text-align: center;
   border-collapse: collapse;
-  
+  overflow: scroll;
 }
 
 tr, td {
@@ -89,13 +89,9 @@ tr:hover {
   background: darkturquoise;
 }
 
-@media screen and (min-width: 300px){
+@media screen and (max-width: 500px){
   .container {
-    min-width: 15em;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin-top: 0px;
+    width: 90vw;
+    min-width: 0;
   }
 }
