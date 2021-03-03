@@ -52,6 +52,18 @@ body {
   margin: 1em;
   width: 103%;
   justify-content: center;
+  border-radius: 25px;
+  border: 0px;
+  outline: none;
+}
+
+.btn:hover {
+  background-color: paleturquoise;
+  color: white;
+}
+
+.btn:active {
+  background-color: black;
 }
 
 input {
