@@ -56,13 +56,16 @@ const createRowItem = (formObj) => {
   newCell.textContent = '$' + formObj['amount'];
   newCell = newRow.insertCell(3);
   newCell.textContent = formObj['category'];
+
   let cellForBtn = newRow.insertCell(4);
-  const btnDeleteItem = document.createElement('button');
-  const btnDeleteText = document.createTextNode('Delete');
-  btnDeleteItem.appendChild(btnDeleteText);
-  cellForBtn.appendChild(btnDeleteItem);
+  const btnContainer = document.createElement('div');
+  const btnIcon = document.createElement('i');
+  btnIcon.setAttribute('class', 'icon-delete');
+  btnIcon.style.cursor = 'pointer';
+  btnContainer.appendChild(btnIcon);
+  cellForBtn.appendChild(btnContainer);
   
-  btnDeleteItem.addEventListener('click', function(){
+  btnContainer.addEventListener('click', function(){
     
     let transactionRow = this.parentNode.parentNode;
     let id = transactionRow.getAttribute('id');
