@@ -27,7 +27,7 @@
         </div>
         <div>
           <label for="amount">Amount</label>
-          <input required type="number" id="amount" name="amount" min="0" placeholder="numbers" pattern="[-+]?[0-9]*[.,]?[0-9]+" required/>
+          <input required type="number" id="amount" name="amount" min="0" maxlength="8" placeholder="numbers" pattern="[-+]?[0-9]*[.,]?[0-9]+" required/>
         </div>
         <div>
           <label for="category">Category</label>
@@ -35,16 +35,17 @@
         </div>
         <button type="submit" id="btn-add" class="btn">Add</button>
       </form>
-      <div id="container-charging"></div>
-      <table id="table">  
+      <div class="container-table">
+        <table id="table">  
         <tr>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Amount</th>
-          <th>Category</th>
-          <th>Delete</th>
-        </tr>
-      </table>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Delete</th>
+          </tr>
+        </table>
+      </div>
     </main>
   </div>
 

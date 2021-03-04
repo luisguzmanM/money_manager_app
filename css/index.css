@@ -11,8 +11,6 @@ body {
 }
 
 .container {
-  width: 40vw;
-  min-width: 25rem;
   position: absolute;
   left: 50%;
   transform: translate(-50%);
@@ -73,6 +71,10 @@ input {
   border-radius: 1.875rem;
   padding: 0.4rem;
   margin-top: 0.3rem;
+}
+
+.container-table {
+  overflow: auto;
 }
 
 table {
