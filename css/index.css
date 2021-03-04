@@ -16,21 +16,19 @@ body {
   transform: translate(-50%);
   background: linear-gradient(90deg, #4ECDC4, #556270);  
   margin-top: 3rem;
+  border-radius: 1.5625rem;
 }
 
 .header {
   text-align: center;
   font-size: 1rem;
   padding: 2rem;
-  border: 0.0625rem solid #000;
+  color: white
 }
 
 .main {
   width: 100%;
   padding: 1rem;
-  border-left: 0.0625rem solid #000;
-  border-right: 0.0625rem solid #000;
-  border-bottom: 0.0625rem solid #000;
 }
 
 .form {
@@ -43,7 +41,7 @@ body {
 
 .btn {
   padding: 0.5rem;
-  color: darkblue;
+  color: black;
   font-weight: bold;
   font-size: 1rem;
   display: flex;
@@ -57,7 +55,7 @@ body {
 }
 
 .btn:hover {
-  background-color: paleturquoise;
+  background-color: darkgrey;
   color: white;
 }
 
@@ -78,26 +76,24 @@ input {
 }
 
 table {
-  border: 1px solid #000;
   width: 100%;
   text-align: center;
   border-collapse: collapse;
   font-size: 1rem;
+  border: 1px solid black
 }
 
 tr, td {
-  border: 0.0625rem solid #000;
   padding: 0.125rem 0.125rem;
 }
 
 th {
-  background: darkslategrey;
+  background: black;
   color: white;
-  border: 0.0625rem solid #000;
 }
 
 tr:nth-child(even) {
-  background: paleturquoise;
+  background: aliceblue;
 }
 
 tr:hover {
