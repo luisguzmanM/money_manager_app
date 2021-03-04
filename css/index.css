@@ -81,11 +81,12 @@ table {
   text-align: center;
   border-collapse: collapse;
   font-size: 0.8rem;
-  border: 1px solid black
+  border: 1px solid black;
+  background-color:aliceblue ;
 }
 
 tr, td {
-  padding: 0.125rem 0.125rem;
+  padding:0.3125rem;
 }
 
 th {
@@ -94,11 +95,11 @@ th {
 }
 
 tr:nth-child(even) {
-  background: aliceblue;
+  background: lightgray;
 }
 
 tr:hover {
-  background: darkturquoise;
+  background: darkgrey;
 }
 
 @media screen and (max-width: 75rem){
