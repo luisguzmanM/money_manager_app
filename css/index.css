@@ -18,6 +18,7 @@ body {
   background: linear-gradient(90deg, #4ECDC4, #556270);  
   margin-top: 3rem;
   border-radius: 1.5625rem;
+  box-shadow: 10px 10px 20px;
 }
 
 .header {
