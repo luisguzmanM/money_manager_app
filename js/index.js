@@ -1,5 +1,7 @@
 const form = document.querySelector("#form");
 const inputTypeSelection = document.getElementsByTagName('typeSelection');
+const income = document.getElementById('income');
+const expense = document.getElementById('expense');
 const inputDescription = document.getElementById('description');
 const inputAmount = document.getElementById('amount');
 const inputCategory = document.getElementById('category');
@@ -52,8 +54,10 @@ const createRowItem = (formObj) => {
   newCell.textContent = formObj['typeSelection'];
   newCell = newRow.insertCell(1);
   newCell.textContent = formObj['description'];
+
   newCell = newRow.insertCell(2);
-  newCell.textContent = '$' + formObj['amount'];
+  newCell.textContent = formObj['amount'];
+  
   newCell = newRow.insertCell(3);
   newCell.textContent = formObj['category'];
 
@@ -73,7 +77,7 @@ const createRowItem = (formObj) => {
     transactionRow.remove();
     
   });
-  
+
 }
 
 const saveData = (formObj) => {
