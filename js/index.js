@@ -7,13 +7,19 @@ const inputAmount = document.getElementById('amount');
 const inputCategory = document.getElementById('category');
 
 const addTask = (e) => {
-
+  
   e.preventDefault();
-  const formData = new FormData(form);
-  const formObj = formToObject(formData);
-  createRowItem(formObj);
-  saveData(formObj);
-  form.reset();
+  if(inputDescription.value == '' || inputAmount.value == '' || inputCategory.value == ''){
+    alert('Please, type the fields correctly')
+  } else {
+    if(income.checked || expense.checked){
+      const formData = new FormData(form);
+      const formObj = formToObject(formData);
+      createRowItem(formObj);
+      saveData(formObj);
+      form.reset();
+    } 
+  }
 
 }
 
@@ -50,8 +56,10 @@ const createRowItem = (formObj) => {
   
   const newRow = document.querySelector("#table").insertRow(-1);
   newRow.setAttribute('id', formObj['id']);
+  
   let newCell = newRow.insertCell(0);
   newCell.textContent = formObj['typeSelection'];
+
   newCell = newRow.insertCell(1);
   newCell.textContent = formObj['description'];
 
