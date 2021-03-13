@@ -27,13 +27,13 @@ const formToObject = (formData) => {
 
   let date = new Date();
 
-  let week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday','Friday', 'Saturday'];
+  let month = date.toLocaleString('default', {month: 'long'});
   
   let typeSelection = formData.get('typeSelection');
   let description = formData.get('description');
   let amount = formData.get('amount');
   let category = formData.get('category');
-  let newDate = date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear();
+  let newDate = date.getDate() + '/' + month + '/' + date.getFullYear();
   let id = getTransactionId();
   
   return {
