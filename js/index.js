@@ -24,11 +24,16 @@ const addTask = (e) => {
 }
 
 const formToObject = (formData) => {
+
+  let date = new Date();
+
+  let week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday','Friday', 'Saturday'];
   
   let typeSelection = formData.get('typeSelection');
   let description = formData.get('description');
   let amount = formData.get('amount');
   let category = formData.get('category');
+  let newDate = date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear();
   let id = getTransactionId();
   
   return {
@@ -37,6 +42,7 @@ const formToObject = (formData) => {
     'description':description,
     'amount':amount,
     'category':category,
+    'day': newDate,
     'id':id
     
   }
@@ -69,7 +75,10 @@ const createRowItem = (formObj) => {
   newCell = newRow.insertCell(3);
   newCell.textContent = formObj['category'];
 
-  let cellForBtn = newRow.insertCell(4);
+  newCell = newRow.insertCell(4);
+  newCell.textContent = formObj['day'];
+
+  let cellForBtn = newRow.insertCell(5);
   const btnContainer = document.createElement('div');
   const btnIcon = document.createElement('i');
   btnIcon.setAttribute('class', 'icon-delete');
