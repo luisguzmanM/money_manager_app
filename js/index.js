@@ -26,7 +26,6 @@ const addTask = (e) => {
 const formToObject = (formData) => {
 
   let date = new Date();
-
   let month = date.toLocaleString('default', {month: 'long'});
   
   let typeSelection = formData.get('typeSelection');
