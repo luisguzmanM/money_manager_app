@@ -35,14 +35,12 @@ const formToObject = (formData) => {
   let id = getTransactionId();
   
   return {
-    
     'typeSelection':typeSelection,
     'description':description,
     'amount':amount,
     'category':category,
     'day': newDate,
     'id':id
-    
   }
   
 }
@@ -60,29 +58,26 @@ const createRowItem = (formObj) => {
   
   const newRow = document.querySelector("#table").insertRow(-1);
   newRow.setAttribute('id', formObj['id']);
-  
-  let newCell = newRow.insertCell(0);
-  newCell.textContent = formObj['typeSelection'];
 
-  if(formObj['typeSelection'] === 'Income'){
-    console.log('Puedo poner el texto verde')
-  } else {
-    console.log('Puedo poner el texto rojo')
-  }
-
-  newCell = newRow.insertCell(1);
+  newCell = newRow.insertCell(0);
   newCell.textContent = formObj['description'];
 
-  newCell = newRow.insertCell(2);
+  newCell = newRow.insertCell(1);
   newCell.textContent = formObj['amount'];
+
+  if(formObj['typeSelection'] === 'Income'){
+    newCell.classList.add('green')
+  } else {
+    newCell.classList.add('red')
+  }
   
-  newCell = newRow.insertCell(3);
+  newCell = newRow.insertCell(2);
   newCell.textContent = formObj['category'];
 
-  newCell = newRow.insertCell(4);
+  newCell = newRow.insertCell(3);
   newCell.textContent = formObj['day'];
 
-  let cellForBtn = newRow.insertCell(5);
+  let cellForBtn = newRow.insertCell(4);
   const btnContainer = document.createElement('div');
   const btnIcon = document.createElement('i');
   btnIcon.setAttribute('class', 'icon-delete');
@@ -91,12 +86,10 @@ const createRowItem = (formObj) => {
   cellForBtn.appendChild(btnContainer);
   
   btnContainer.addEventListener('click', function(){
-    
     let transactionRow = this.parentNode.parentNode;
     let id = transactionRow.getAttribute('id');
     deleteItemLocalStorage(id);
     transactionRow.remove();
-    
   });
 
 }
