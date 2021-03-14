@@ -26,13 +26,12 @@ const addTask = (e) => {
 const formToObject = (formData) => {
 
   let date = new Date();
-  let month = date.toLocaleString('default', {month: 'long'});
-  
+  let month = date.toLocaleString('default', {month: 'short'});
   let typeSelection = formData.get('typeSelection');
   let description = formData.get('description');
   let amount = formData.get('amount');
   let category = formData.get('category');
-  let newDate = date.getDate() + '/' + month + '/' + date.getFullYear();
+  let newDate = date.getDate() + '/' + month + '/' + (date.getFullYear() -2000);
   let id = getTransactionId();
   
   return {
@@ -64,6 +63,12 @@ const createRowItem = (formObj) => {
   
   let newCell = newRow.insertCell(0);
   newCell.textContent = formObj['typeSelection'];
+
+  if(formObj['typeSelection'] === 'Income'){
+    console.log('Puedo poner el texto verde')
+  } else {
+    console.log('Puedo poner el texto rojo')
+  }
 
   newCell = newRow.insertCell(1);
   newCell.textContent = formObj['description'];
